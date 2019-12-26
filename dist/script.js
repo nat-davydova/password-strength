@@ -1,5 +1,6 @@
 DOM = {
-  passwInput: document.querySelector('.password-strength__input') };
+  passwInput: document.querySelector('.password-strength__input'),
+  passwVisibility: document.querySelector('.password-strength__visibility') };
 
 
 const getPasswordVal = () => {
@@ -9,4 +10,8 @@ const getPasswordVal = () => {
 
 DOM.passwInput.addEventListener('input', () => {
   getPasswordVal();
+});
+
+DOM.passwVisibility.addEventListener('click', () => {
+
 });
