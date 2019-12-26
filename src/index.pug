@@ -24,6 +24,9 @@ header.header
               label(for="password-input") Password
               input.password-strength__input.form-control(type="password" id="password-input" aria-describedby="passwordHelp" placeholder="Enter password")
               small#passwordHelp.form-text.text-muted Add lowercase letters, uppercase letters, numbers and symbols to make the password really strong!
+              
+            .progress
+              .progress-bar.progress-bar-striped.progress-bar-animated.bg-danger(role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")
             
             button.btn.btn-success(type="submit" disabled) Submit
             
