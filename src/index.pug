@@ -16,18 +16,26 @@ header.header
       
         .col-lg-8.m-auto
           
-          form.password-strength.form
+          form.password-strength.form.p-4
           
-            h3.form__title.text-center Enter the Password
+            h3.form__title.text-center.mb-4 Enter the Password
             
             .form-group
-              label(for="password-input") Password
-              input.password-strength__input.form-control(type="password" id="password-input" aria-describedby="passwordHelp" placeholder="Enter password")
-              small#passwordHelp.form-text.text-muted Add lowercase letters, uppercase letters, numbers and symbols to make the password really strong!
-              
-            .progress
-              .progress-bar.progress-bar-striped.progress-bar-animated.bg-danger(role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")
             
-            button.btn.btn-success(type="submit" disabled) Submit
+              label(for="password-input") Password
+              
+              .input-group
+                input.password-strength__input.form-control(type="password" id="password-input" aria-describedby="passwordHelp" placeholder="Enter password")
+                .input-group-append
+                  button.btn.btn-outline-secondary(type="button")
+                    i.fas.fa-eye-slash
+                    i.fas.fa-eye.js-hidden
+                    
+              small#passwordHelp.form-text.text-muted.mt-2 Add 9 charachters or more, lowercase letters, uppercase letters, numbers and symbols to make the password really strong!
+              
+            .progress.mb-4
+              .progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100")
+            
+            button.btn.btn-success.d-flex.m-auto(type="submit" disabled) Submit
             
               
