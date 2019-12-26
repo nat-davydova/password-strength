@@ -22,7 +22,10 @@
         <div class="col-lg-8 m-auto">
           <form class="password-strength form">
             <h3 class="form__title text-center">Enter the Password</h3>
-            <div class="form-group"></div>
+            <div class="form-group">
+              <label for="password-input">Password</label>
+              <input class="password-strength__input form-control" type="password" id="password-input" aria-describedby="passwordHelp" placeholder="Enter password"/><small class="form-text text-muted" id="passwordHelp">Add lowercase letters, uppercase letters, numbers and symbols to make the password really strong!</small>
+            </div>
             <button class="btn btn-success" type="submit" disabled="disabled">Submit</button>
           </form>
         </div>

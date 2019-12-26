@@ -21,6 +21,9 @@ header.header
             h3.form__title.text-center Enter the Password
             
             .form-group
+              label(for="password-input") Password
+              input.password-strength__input.form-control(type="password" id="password-input" aria-describedby="passwordHelp" placeholder="Enter password")
+              small#passwordHelp.form-text.text-muted Add lowercase letters, uppercase letters, numbers and symbols to make the password really strong!
             
             button.btn.btn-success(type="submit" disabled) Submit
             
