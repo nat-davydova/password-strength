@@ -23,14 +23,16 @@ const findParentNode = (elem, parentClass) => {
 
 //*** MAIN CODE
 
-const getPasswordVal = () => {
-  console.log(DOM.passwInput.value);
-  return DOM.passwInput.value;
+const getPasswordVal = input => {
+  console.log(input.value);
+  return input.value;
 };
 
-// const passwordStrength = () => {
-//   getPasswordVal();
-// };
+const passwordStrength = input => {
+  
+  const passw = getPasswordVal(input);
+  
+};
 
 const passwordVisible = passwField => {
   
@@ -79,9 +81,11 @@ const passwVisibilitySwitcher = (passwField, visibilityToggler) => {
   changeVisibiltyBtnIcon(visibilityToggler, visibilityStatus);
 }
 
-// DOM.passwInput.addEventListener('input', () => {
-//   passwordStrength();
-// });
+
+//*** EVENT LISTENERS
+DOM.passwInput.addEventListener('input', () => {
+  passwordStrength(DOM.passwInput);
+});
 
 const passwVisibilityBtn = document.querySelector(DOM.passwVisibilityBtn);
 
