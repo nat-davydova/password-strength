@@ -28,8 +28,10 @@ header.header
                 input.password-strength__input.form-control(type="password" id="password-input" aria-describedby="passwordHelp" placeholder="Enter password")
                 .input-group-append
                   button.password-strength__visibility.btn.btn-outline-secondary(type="button")
-                    i.fas.fa-eye-slash
-                    i.fas.fa-eye.js-hidden
+                    span.password-strength__visibility-icon(data-visible='hidden')
+                      i.fas.fa-eye-slash
+                    span.password-strength__visibility-icon(data-visible='visible').js-hidden
+                      i.fas.fa-eye
                     
               small#passwordHelp.form-text.text-muted.mt-2 Add 9 charachters or more, lowercase letters, uppercase letters, numbers and symbols to make the password really strong!
               
