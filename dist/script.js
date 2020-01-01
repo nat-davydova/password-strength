@@ -1,8 +1,27 @@
 DOM = {
   passwInput: document.querySelector('.password-strength__input'),
-  passwVisibilityBtn: document.querySelector('.password-strength__visibility'),
+  passwVisibilityBtn: '.password-strength__visibility',
   passwVisibility_icon: '.password-strength__visibility-icon' };
 
+
+//*** HELPERS
+
+const findParentNode = (elem, parentClass) => {
+
+  while (true) {
+
+    if (!elem.classList.contains(parentClass)) {
+      elem = elem.parentNode;
+    } else {
+      return elem;
+      break;
+    }
+
+  }
+
+};
+
+//*** MAIN CODE
 
 const getPasswordVal = () => {
   console.log(DOM.passwInput.value);
@@ -64,15 +83,12 @@ const passwVisibilitySwitcher = (passwField, visibilityToggler) => {
 //   passwordStrength();
 // });
 
-DOM.passwVisibilityBtn.addEventListener('click', e => {
+const passwVisibilityBtn = document.querySelector(DOM.passwVisibilityBtn);
 
-  let toggler = e.target;
+passwVisibilityBtn.addEventListener('click', e => {
 
-  if (toggler.tagName === 'I') {
-    toggler = e.target.parentNode.parentNode;
-  } else if (toggler.tagName === 'SPAN') {
-    toggler = e.target.parentNode;
-  }
+  let togglerClass = DOM.passwVisibilityBtn.slice(1, DOM.passwVisibilityBtn.length);
+  let toggler = findParentNode(e.target, togglerClass);
 
   passwVisibilitySwitcher(DOM.passwInput, toggler);
 
