@@ -40,11 +40,13 @@ const passwordStrength = input => {
   const passw = getPasswordVal(input);
 
   //finding strength
-  let strength = 0;
+  let strength = 'weak';
 
-  const middle = /[a-zA-Z]/ig;
+  const moderate = /(?=.*[A-Z])(?=.*[a-z]).{5,}/g;
+  const strong = /(?=.*[A-Z])(?=.*[a-z])(?=.*[\d]).{7,}/g;
+  const extraStrong = /(?=.*[A-Z])(?=.*[a-z])(?=.*[\d])(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?]).{9,}/g;
 
-  const testResult = testPasswRegexp(passw, middle);
+  const testResult = testPasswRegexp(passw, extraStrong);
 
   console.log(testResult);
 
