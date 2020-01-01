@@ -28,9 +28,25 @@ const getPasswordVal = input => {
   return input.value;
 };
 
+const testPasswRegexp = (passw, regexp) => {
+
+  return regexp.test(passw);
+
+};
+
 const passwordStrength = input => {
 
+  //getting password
   const passw = getPasswordVal(input);
+
+  //finding strength
+  let strength = 0;
+
+  const middle = /[a-zA-Z]/ig;
+
+  const testResult = testPasswRegexp(passw, middle);
+
+  console.log(testResult);
 
 };
 
