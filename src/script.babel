@@ -14,7 +14,6 @@ const findParentNode = (elem, parentClass) => {
       elem = elem.parentNode;
     } else {
       return elem;
-      break;
     }
     
   }
@@ -34,21 +33,35 @@ const testPasswRegexp = (passw, regexp) => {
   
 };
 
+const testPassw = passw => {
+  
+  let strength = 'none';
+  
+  const moderate = /(?=.*[A-Z]{2,})(?=.*[a-z]).{5,}|(?=.*[\d]{2,})(?=.*[a-z]).{5,}|(?=.*[\d])(?=.*[A-Z])(?=.*[a-z]).{5,}/g; 
+  const strong = /(?=.*[A-Z])(?=.*[a-z])(?=.*[\d]).{7,}|(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=.*[\d]).{7,}/g;
+  const extraStrong = /(?=.*[A-Z])(?=.*[a-z])(?=.*[\d])(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?]).{9,}/g;
+  
+  if(testPasswRegexp(passw, extraStrong)) {
+    strength = 'extra';
+  } else if(testPasswRegexp(passw, strong)) {
+    strength = 'strong';
+  } else if(testPasswRegexp(passw, moderate)) {
+    strength = 'moderate';
+  } else if(passw.length > 0) {
+    strength = 'weak';  
+  }
+  
+  return strength;
+  
+};
+
 const passwordStrength = input => {
   
   //getting password
   const passw = getPasswordVal(input);
   
   //finding strength
-  let strength = 'weak';
-  
-  const moderate = /(?=.*[A-Z])(?=.*[a-z]).{5,}/g; 
-  const strong = /(?=.*[A-Z])(?=.*[a-z])(?=.*[\d]).{7,}/g;
-  const extraStrong = /(?=.*[A-Z])(?=.*[a-z])(?=.*[\d])(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?]).{9,}/g;
-  
-  const testResult = testPasswRegexp(passw, extraStrong);
-  
-  console.log(testResult)
+  const strength = testPassw(passw);
   
 };
 
