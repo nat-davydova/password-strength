@@ -3,6 +3,7 @@ DOM = {
   passwVisibilityBtn: '.password-strength__visibility',
   passwVisibility_icon: '.password-strength__visibility-icon',
   strengthBar: document.querySelector('.password-strength__bar'),
+  submitBtn: document.querySelector('.password-strength__submit'),
 }
 
 //*** HELPERS
@@ -24,7 +25,6 @@ const findParentNode = (elem, parentClass) => {
 //*** MAIN CODE
 
 const getPasswordVal = input => {
-  console.log(input.value);
   return input.value;
 };
 
@@ -90,6 +90,7 @@ const setStrengthBarValue = (bar, strength) => {
   
 };
 
+//also adds a text label based on styles
 const setStrengthBarStyles = (bar, strengthValue) => {
   
   bar.style.width = `${strengthValue}%`;
@@ -137,7 +138,17 @@ const setStrengthBar = (bar, strength) => {
   setStrengthBarStyles(bar, strengthValue);
 };
 
-const passwordStrength = (input, strengthBar) => {
+const unblockSubmitBtn = (btn, strength) => {
+  
+  if(strength === 'none' || strength === 'weak') {
+    btn.disabled = true;
+  } else {
+    btn.disabled = false;
+  }
+  
+};
+
+const passwordStrength = (input, strengthBar, btn) => {
   
   //getting password
   const passw = getPasswordVal(input);
@@ -148,6 +159,8 @@ const passwordStrength = (input, strengthBar) => {
   //setting strength bar (value and styles)
   setStrengthBar(strengthBar, strength);
   
+  //unblock submit btn only if password is moderate or stronger
+  unblockSubmitBtn(btn,strength);
 };
 
 const passwordVisible = passwField => {
@@ -200,7 +213,7 @@ const passwVisibilitySwitcher = (passwField, visibilityToggler) => {
 
 //*** EVENT LISTENERS
 DOM.passwInput.addEventListener('input', () => {
-  passwordStrength(DOM.passwInput, DOM.strengthBar);
+  passwordStrength(DOM.passwInput, DOM.strengthBar, DOM.submitBtn);
 });
 
 const passwVisibilityBtn = document.querySelector(DOM.passwVisibilityBtn);
