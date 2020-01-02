@@ -6,3 +6,10 @@
 * Bootstrap v4
 * SCSS/CSS
 * JS (ES6+) / Babel
+
+### Test Cases
+
+* **Moderate Password** - 5 symbols or more, uppercase and lowercase letters OR letters (uppercase/lowercase/both types) and numbers
+* **Strong Password** - 7 symbols or more, uppercase letters, lowercase letters and numbers OR lowercase letters, numbers and special characters
+* **Extra Strong Password** - 9 symbols or more, uppercase letters, lowercase letters, numbers and special characters
+* **Not allowed** - spaces
