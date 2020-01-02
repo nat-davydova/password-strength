@@ -90,13 +90,43 @@ const setStrengthBarValue = (bar, strength) => {
 
 };
 
+const setStrengthBarStyles = (bar, strengthValue) => {
+
+  bar.classList.remove('bg-success', 'bg-info', 'bg-warning', 'bg-danger');
+
+  bar.style.width = `${strengthValue}%`;
+
+  switch (strengthValue) {
+    case 25:
+      bar.classList.add('bg-danger');
+      break;
+
+    case 50:
+      bar.classList.add('bg-warning');
+      break;
+
+    case 75:
+      bar.classList.add('bg-info');
+      break;
+
+    case 100:
+      bar.classList.add('bg-success');
+      break;
+
+    default:
+      bar.classList.remove('bg-success', 'bg-info', 'bg-warning', 'bg-danger');
+      bar.style.width = `0`;}
+
+
+};
+
 const setStrengthBar = (bar, strength) => {
 
   //setting value
   const strengthValue = setStrengthBarValue(bar, strength);
 
   //setting styles
-
+  setStrengthBarStyles(bar, strengthValue);
 };
 
 const passwordStrength = (input, strengthBar) => {
