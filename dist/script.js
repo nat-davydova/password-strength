@@ -1,4 +1,6 @@
 DOM = {
+  passwForm: '.password-strength',
+  passwErrorMsg: '.password-strength__error',
   passwInput: document.querySelector('.password-strength__input'),
   passwVisibilityBtn: '.password-strength__visibility',
   passwVisibility_icon: '.password-strength__visibility-icon',
@@ -8,7 +10,10 @@ DOM = {
 
 //*** HELPERS
 
+//need to append classname with '.' symbol
 const findParentNode = (elem, parentClass) => {
+
+  parentClass = parentClass.slice(1, parentClass.length);
 
   while (true) {
 
@@ -53,6 +58,14 @@ const testPassw = passw => {
   }
 
   return strength;
+
+};
+
+const testPasswError = passw => {
+
+  const errorSymbols = /\s/g;
+
+  return testPasswRegexp(passw, errorSymbols);
 
 };
 
@@ -148,19 +161,48 @@ const unblockSubmitBtn = (btn, strength) => {
 
 };
 
+const findErrorMsg = input => {
+  const passwForm = findParentNode(input, DOM.passwForm);
+  return passwForm.querySelector(DOM.passwErrorMsg);
+};
+
+const showErrorMsg = input => {
+  const errorMsg = findErrorMsg(input);
+  errorMsg.classList.remove('js-hidden');
+};
+
+const hideErrorMsg = input => {
+  const errorMsg = findErrorMsg(input);
+  errorMsg.classList.add('js-hidden');
+};
+
 const passwordStrength = (input, strengthBar, btn) => {
 
   //getting password
   const passw = getPasswordVal(input);
 
-  //finding strength
-  const strength = testPassw(passw);
+  //check if there is an error
+  const error = testPasswError(passw);
 
-  //setting strength bar (value and styles)
-  setStrengthBar(strengthBar, strength);
+  if (error) {
 
-  //unblock submit btn only if password is moderate or stronger
-  unblockSubmitBtn(btn, strength);
+    showErrorMsg(input);
+
+  } else {
+
+    //hide error messages
+    hideErrorMsg(input);
+
+    //finding strength
+    const strength = testPassw(passw);
+
+    //setting strength bar (value and styles)
+    setStrengthBar(strengthBar, strength);
+
+    //unblock submit btn only if password is moderate or stronger
+    unblockSubmitBtn(btn, strength);
+  }
+
 };
 
 const passwordVisible = passwField => {
@@ -220,8 +262,7 @@ const passwVisibilityBtn = document.querySelector(DOM.passwVisibilityBtn);
 
 passwVisibilityBtn.addEventListener('click', e => {
 
-  let togglerClass = DOM.passwVisibilityBtn.slice(1, DOM.passwVisibilityBtn.length);
-  let toggler = findParentNode(e.target, togglerClass);
+  let toggler = findParentNode(e.target, DOM.passwVisibilityBtn);
 
   passwVisibilitySwitcher(DOM.passwInput, toggler);
 
