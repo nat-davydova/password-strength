@@ -92,29 +92,37 @@ const setStrengthBarValue = (bar, strength) => {
 
 const setStrengthBarStyles = (bar, strengthValue) => {
 
-  bar.classList.remove('bg-success', 'bg-info', 'bg-warning', 'bg-danger');
-
   bar.style.width = `${strengthValue}%`;
+
+  bar.classList.remove('bg-success', 'bg-info', 'bg-warning');
 
   switch (strengthValue) {
     case 25:
       bar.classList.add('bg-danger');
+      bar.textContent = 'Weak';
       break;
 
     case 50:
+      bar.classList.remove('bg-danger');
       bar.classList.add('bg-warning');
+      bar.textContent = 'Moderate';
       break;
 
     case 75:
+      bar.classList.remove('bg-danger');
       bar.classList.add('bg-info');
+      bar.textContent = 'Strong';
       break;
 
     case 100:
+      bar.classList.remove('bg-danger');
       bar.classList.add('bg-success');
+      bar.textContent = 'Extra Strong';
       break;
 
     default:
-      bar.classList.remove('bg-success', 'bg-info', 'bg-warning', 'bg-danger');
+      bar.classList.add('bg-danger');
+      bar.textContent = '';
       bar.style.width = `0`;}
 
 
