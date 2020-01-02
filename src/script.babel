@@ -2,6 +2,7 @@ DOM = {
   passwInput: document.querySelector('.password-strength__input'),
   passwVisibilityBtn: '.password-strength__visibility',
   passwVisibility_icon: '.password-strength__visibility-icon',
+  strengthBar: document.querySelector('.password-strength__bar'),
 }
 
 //*** HELPERS
@@ -55,13 +56,59 @@ const testPassw = passw => {
   
 };
 
-const passwordStrength = input => {
+const setStrengthBarValue = (bar, strength) => {
+  
+  let strengthValue;
+  
+  switch(strength) {
+    case 'weak':
+      strengthValue = 25;
+      bar.setAttribute('aria-valuenow', strengthValue);
+      break;
+      
+    case 'moderate':
+      strengthValue = 50;
+      bar.setAttribute('aria-valuenow', strengthValue);
+      break;
+      
+    case 'strong':
+      strengthValue = 75;
+      bar.setAttribute('aria-valuenow', strengthValue);
+      break;
+      
+    case 'extra':
+      strengthValue = 100;
+      bar.setAttribute('aria-valuenow', strengthValue);
+      break;
+      
+    default:
+      strengthValue = 0;
+      bar.setAttribute('aria-valuenow', 0);
+  }
+  
+  return strengthValue;
+  
+};
+
+const setStrengthBar = (bar, strength) => {
+  
+  //setting value
+  const strengthValue = setStrengthBarValue(bar, strength);
+  
+  //setting styles
+  
+};
+
+const passwordStrength = (input, strengthBar) => {
   
   //getting password
   const passw = getPasswordVal(input);
   
   //finding strength
   const strength = testPassw(passw);
+  
+  //setting strength bar (value and styles)
+  setStrengthBar(strengthBar, strength);
   
 };
 
@@ -115,7 +162,7 @@ const passwVisibilitySwitcher = (passwField, visibilityToggler) => {
 
 //*** EVENT LISTENERS
 DOM.passwInput.addEventListener('input', () => {
-  passwordStrength(DOM.passwInput);
+  passwordStrength(DOM.passwInput, DOM.strengthBar);
 });
 
 const passwVisibilityBtn = document.querySelector(DOM.passwVisibilityBtn);
