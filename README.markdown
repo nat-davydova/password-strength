@@ -6,6 +6,7 @@
 * Bootstrap v4
 * SCSS/CSS
 * JS (ES6+) / Babel
+* Regular Expressions (hand-built)
 
 ### Test Cases
 
