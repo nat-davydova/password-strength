@@ -1,4 +1,4 @@
-# Password Strength Validator (Bootstrap based)
+# Password Strength Validator UI (Bootstrap based)
 
 [Check the Demo](https://codepen.io/nat-davydova/pen/yLyXogO)
 
