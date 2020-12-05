@@ -2,7 +2,7 @@
 
 [Check the Demo](https://codepen.io/nat-davydova/pen/yLyXogO)
 
-<img src="http://natali-davydova.me/assets/img/portfolio/password-strength/sample.png" width="550" />
+<img src="http://natali-davydova.me/assets/img/password-strength/sample.png" width="550" />
 
 * HTML/Pug
 * Bootstrap v4
